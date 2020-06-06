@@ -12,8 +12,28 @@ repositories {
 }
 kotlin {
     jvm()
-    linuxX64()
-    linuxArm64()
+    linuxX64() {
+        binaries {
+            executable {  }
+        }
+        compilations.getByName("main") {
+            val mockCLibInterop by cinterops.creating {
+                defFile(project.file("src/nativeInterop/cinterop/mockCLib.def"))
+                compilerOpts.add("-I${project.rootDir}/mockCLib")
+            }
+        }
+    }
+    linuxArm64() {
+        binaries {
+            executable {  }
+        }
+        compilations.getByName("main") {
+            val mockCLibInterop by cinterops.creating {
+                defFile(project.file("src/nativeInterop/cinterop/mockCLib.def"))
+                compilerOpts.add("-I${project.rootDir}/mockCLib")
+            }
+        }
+    }
     linuxArm32Hfp()
     mingwX64()
     macosX64()
@@ -71,9 +91,9 @@ kotlin {
                 implementation(kotlin("test-junit"))
             }
         }
-        val linuxX64Main by getting { }
+        val linuxX64Main by getting {}
         val linuxX64Test by getting { }
-        val linuxArm64Main by getting { }
+        val linuxArm64Main by getting {}
         val linuxArm64Test by getting { }
         val linuxArm32HfpMain by getting { }
         val linuxArm32HfpTest by getting { }
