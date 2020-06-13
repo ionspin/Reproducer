@@ -14,7 +14,9 @@ kotlin {
     jvm()
     linuxX64() {
         binaries {
-            executable {  }
+            executable {
+                freeCompilerArgs = listOf("-Xallocator", "mimalloc")
+            }
         }
         compilations.getByName("main") {
             val mockCLibInterop by cinterops.creating {
@@ -25,7 +27,9 @@ kotlin {
     }
     linuxArm64() {
         binaries {
-            executable {  }
+            executable {
+                freeCompilerArgs = listOf("-Xallocator", "mimalloc")
+            }
         }
         compilations.getByName("main") {
             val mockCLibInterop by cinterops.creating {
