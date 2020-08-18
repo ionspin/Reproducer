@@ -1,5 +1,5 @@
 plugins {
-    kotlin("multiplatform") version "1.4-M2"
+    kotlin("multiplatform") version "1.4.0-rc"
 }
 group = "com.ionspin"
 version = "1.0-SNAPSHOT"
@@ -90,7 +90,11 @@ kotlin {
                 implementation(kotlin("stdlib-js"))
             }
         }
-        val nodeJsTest by getting { }
+        val nodeJsTest by getting {
+            dependencies {
+                implementation(kotlin("test-js"))
+            }
+        }
         val browserMain by getting {
             dependencies {
                 implementation(kotlin("stdlib-js"))

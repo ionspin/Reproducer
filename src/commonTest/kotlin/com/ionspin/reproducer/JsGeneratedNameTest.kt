@@ -5,14 +5,12 @@ import kotlin.test.Test
 /**
  * Created by Ugljesa Jovanovic
  * ugljesa.jovanovic@ionspin.com
- * on 05-Jun-2020
+ * on 08-Aug-2020
  */
-
-
-class ULongArrayReproducerTest {
+class JsGeneratedNameTest {
 
     @Test
-    fun testULongArray() {
-        println(ULongArrayReproducer.getOne())
+    fun testWrongJsNameGenerated() {
+        IrrelevantClass().methodName()
     }
 }
